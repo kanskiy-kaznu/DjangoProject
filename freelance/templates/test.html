@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block context %}
+
+<form method="get">
+
+
+    {{ filter.form.categories }}
+{{ filter.form.price.label }}
+
+
+
+<button>afa</button>
+</form>
+
+{% for i in form %}
+    {{ i.categories }}<br/>
+
+    {% endfor %}
+
+{% endblock %}

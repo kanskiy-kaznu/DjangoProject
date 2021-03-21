@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>FREELANCE</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'assets/css/ready.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+</head>
+<body>
+<div class="wrapper">
+    <div class="main-header">
+        <div class="logo-header">
+            <a href="{% url 'home' %}" class="logo">
+                logo
+            </a>
+            <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="scrollbar-inner sidebar-wrapper">
+            <div class="user">
+                {% if request.user.is_authenticated %}
+                <div class="photo">
+                    <!--							<img src="assets/img/profile.jpg">-->
+                </div>
+                <div class="info">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
+								<span>
+									{{ request.user }}
+									<span class="user-level">{{ request.user.first_name }}</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="in collapse" id="collapseExample" aria-expanded="true" style="">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}">
+                                    <span class="link-collapse"> Выйти </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nav">
+                <span class="nav-item">
+                    <a href="{% url 'login' %}">
+                        <i class="la la-user-secret"></i>
+                        <p class="h6">Войти</p>
+                    </a>
+                <span>
+                </div>
+
+
+                {% endif %}
+            </div>
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a href="{% url 'task' %}">
+                        <i class="la la-dashboard"></i>
+                        <p>Заданий</p>
+                        <span class="badge badge-count">5</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="la la-table"></i>
+                        <p>Вакансий</p>
+                        <span class="badge badge-count">14</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="la la-keyboard-o"></i>
+                        <p>Обучения</p>
+                        <span class="badge badge-count">50</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="la la-th"></i>
+                        <p>Новости</p>
+                        <span class="badge badge-count">6</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="la la-bell"></i>
+                        <p>Мероприятий</p>
+                        <span class="badge badge-success">3</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid"><h4 class="page-title">{% block title %} {% endblock title %}</h4>
+                {% block context %}
+                {% endblock context %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'assets/js/core/jquery.3.2.1.min.js' %}"></script>
+<script src="{% static 'assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
+<script src='{% static "assets/js/core/popper.min.js" %}'></script>
+<script src='{% static "assets/js/core/bootstrap.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/chartist/chartist.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/jquery-mapael/jquery.mapael.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/jquery-mapael/maps/world_countries.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/chart-circle/circles.min.js"%}'>></script>
+<script src='{% static "assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"%}'>></script>
+<script src='{% static "assets/js/ready.min.js"%}'>></script>
+</html>

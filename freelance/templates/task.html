@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock title %}
+
+
+{% block context %}
+
+
+<nav class="navbar navbar-light bg-light">
+    <form>
+        {% if request.user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'create' %}">Создать задание</a>
+        {% else %}
+        <a disabled class="btn btn-primary">Создать задание</a>
+        {% endif %}
+    </form>
+
+    <div class="card-body ">
+
+</nav>
+
+
+<form method="GET">
+    <div class="form-group">
+        {{ filters.form.categories.label }}
+        {{ filters.form.categories }}
+
+        <button type="submit" class="btn btn-primary">Поиск</button>
+</form>
+
+
+<div class="card-body ">
+    <div class="table-full-width">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Задание</th>
+                <td>Цена</td>
+                <th>Категория</th>
+                <th>Подробнее</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in form %}
+            <tr>
+                <td> {{ i.id }}</td>
+                <td> {{ i.title }}</td>
+                <td>{{ i.price }} тг.</td>
+                <td> {{ i.categories }}</td>
+                <td><a class="btn btn-primary" href="{% url 'details' i.id %}"> Подробнее </a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock context %}

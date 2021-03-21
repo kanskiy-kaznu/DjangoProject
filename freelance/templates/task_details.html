@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Подробнее {% endblock title %}
+{% block context %}
+
+<tbody>
+<tr>
+    <td><span class="h6">Категория: {{ ids.categories }}</span></td>
+</tr>
+<tr>
+    <td>
+        <p></p>
+    </td>
+    <td><span class="h6">Название: {{ ids.title }}</span></td>
+</tr>
+<tr>
+    <td>
+        <p></p>
+    </td>
+    <td><span class="h6">
+Описание:
+        {{ ids.descriptions }}</span></td>
+</tr>
+<tr>
+    <td>
+        <p></p>
+    </td>
+    <td><span class="h6">
+
+Цена: {{ ids.price }} тг.</span></td>
+</tr>
+
+
+</tbody>
+
+
+{% endblock context %}
+
+<!--   title = models.CharField(max_length=255)-->
+<!--    categories = models.ForeignKey(Categories, on_delete=models.CASCADE)-->
+<!--    descriptions = models.TextField()-->
+<!--    price = models.IntegerField()-->
